@@ -12,7 +12,7 @@ The **[Simscape Multibody Tire Model](https://www.mathworks.com/help/physmod/sm/
 * **Parking Lot Maneuver** to test behavior at zero speed
 * **Slalom on a Hill** to test behavior at low speed and in reverse
 
-Open the project file sm_vehicle_heave_roll.prj to get started.
+Open the project file sm_vehicle_14dof.prj to get started.
 
 [![View Simscape Vehicle Templates on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/79484-simscape-vehicle-templates)
 
