@@ -14,6 +14,8 @@ The **[Simscape Multibody Tire Model](https://www.mathworks.com/help/physmod/sm/
 
 Open the project file sm_vehicle_heave_roll.prj to get started.
 
+[![View Simscape Vehicle Templates on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/79484-simscape-vehicle-templates)
+
 **Acknowledgements**: MathWorks would like to thank M V Krishna Teja, PhD, 
 [Virtual Proving Ground and Simulation Lab](https://prof-rkkumar.wixsite.com/iitm-vpg-lab), Raghupati Singhania Centre of 
 Excellence at the Indian Institute of Technology, Madras for contributions 
