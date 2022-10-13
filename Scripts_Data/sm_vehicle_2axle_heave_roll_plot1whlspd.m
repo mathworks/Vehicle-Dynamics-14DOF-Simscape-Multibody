@@ -5,7 +5,7 @@
 % rotational wheel speeds are scaled by the unloaded radius so they can be
 % compared with the translational speed of the vehicle.
 
-% Copyright 2021 The MathWorks, Inc.
+% Copyright 2021-2022 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sm_vehicle_2axle_heave_roll', 'var')

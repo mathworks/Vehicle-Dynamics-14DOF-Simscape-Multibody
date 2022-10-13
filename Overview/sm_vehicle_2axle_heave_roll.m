@@ -23,14 +23,14 @@
 % Institute of Technology, Madras for providing the tire parameters for
 % this example.
 %
-% Copyright 2021 The MathWorks, Inc.
+% Copyright 2021-2022 The MathWorks, Inc.
 
 
 %% Model
 
 open_system('sm_vehicle_2axle_heave_roll')
 
-set_param(find_system('sm_vehicle_2axle_heave_roll','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+set_param(find_system('sm_vehicle_2axle_heave_roll','MatchFilter',@Simulink.match.allVariants,'FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
 
 %% Vehicle Model
 

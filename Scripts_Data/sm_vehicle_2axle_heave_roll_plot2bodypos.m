@@ -3,7 +3,7 @@
 %
 % The plot below shows the position of the vehicle during the maneuver.
 
-% Copyright 2021 The MathWorks, Inc.
+% Copyright 2021-2022 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sm_vehicle_2axle_heave_roll', 'var')

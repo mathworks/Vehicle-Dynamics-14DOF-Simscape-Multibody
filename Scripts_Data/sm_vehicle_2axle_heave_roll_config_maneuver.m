@@ -7,7 +7,7 @@ function sm_vehicle_2axle_heave_roll_config_maneuver(mdl,VehicleData,tire_test)
 %   tire_test     'slalom','slalomhill','parking','sinewithdwell',
 % %               'stepsteer','plateau'
 %
-% Copyright 2021 The MathWorks, Inc.
+% Copyright 2021-2022 The MathWorks, Inc.
 
 % Defaults for vehicle initial position in World coordinate frame
 InitVehicle.Vehicle.px = 0;  % m
