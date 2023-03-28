@@ -10,7 +10,7 @@ function [xy_data_L, xy_data_R] = Extr_Data_RDF(filename, poly_line_depth, varar
 %   add 'plot' as the final argument
 %   >> Extr_Data_RDF(10,5,'plot')
 
-% Copyright 2013-2022 The MathWorks, Inc.
+% Copyright 2013-2023 The MathWorks, Inc.
 
 showplot = 'n';
 if(nargin>2)
@@ -40,9 +40,9 @@ switch char(rdf_type)
         xy_data_R = [-1 -1];
         disp(['RDF type not found in ' which(filename) ]);
     case 'poly_line'
-        road.x = road_raw.data(2:end-1,1);
-        road.zl = road_raw.data(2:end-1,2);
-        road.zr = road_raw.data(2:end-1,3);
+        road.x = road_raw.data(1:end-1,1);
+        road.zl = road_raw.data(1:end-1,2);
+        road.zr = road_raw.data(1:end-1,3);
         xy_data_L = flipud([road.x road.zl;flipud(road.x) flipud(road.zl)-poly_line_depth]);
         xy_data_R = flipud([road.x road.zr;flipud(road.x) flipud(road.zr)-poly_line_depth]);
         

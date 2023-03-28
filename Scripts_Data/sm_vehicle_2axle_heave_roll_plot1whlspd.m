@@ -1,3 +1,4 @@
+function h=sm_vehicle_2axle_heave_roll_plot1whlspd(simlogRes,logsoutRes,whlRadF,whlRadR)
 % Code to plot simulation results from sm_vehicle_2axle_heave_roll
 %% Plot Description:
 %
@@ -5,28 +6,32 @@
 % rotational wheel speeds are scaled by the unloaded radius so they can be
 % compared with the translational speed of the vehicle.
 
-% Copyright 2021-2022 The MathWorks, Inc.
-
-% Generate simulation results if they don't exist
-if ~exist('simlog_sm_vehicle_2axle_heave_roll', 'var')
-    sim('sm_vehicle_2axle_heave_roll')
-end
+% Copyright 2021-2023 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
-if ~exist('h1_sm_vehicle_2axle_heave_roll', 'var') || ...
-        ~isgraphics(h1_sm_vehicle_2axle_heave_roll, 'figure')
-    h1_sm_vehicle_2axle_heave_roll = figure('Name', 'sm_vehicle_2axle_heave_roll');
+figString = ['h1_' mfilename];
+% Only create a figure if no figure exists
+figExist = 0;
+fig_hExist = evalin('base',['exist(''' figString ''',''var'')']);
+if (fig_hExist)
+    figExist = evalin('base',['ishandle(' figString ') && strcmp(get(' figString ', ''type''), ''figure'')']);
 end
-figure(h1_sm_vehicle_2axle_heave_roll)
-clf(h1_sm_vehicle_2axle_heave_roll)
+if ~figExist
+    fig_h = figure('Name',figString);
+    assignin('base',figString,fig_h);
+else
+    fig_h = evalin('base',figString);
+end
+figure(fig_h)
+clf(fig_h)
 
 % Get simulation results
-simlog_t    = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Revolute_FL.Rz.w.series.time;
-simlog_vFL  = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Revolute_FL.Rz.w.series.values('rad/s')*VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS;
-simlog_vFR  = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Revolute_FR.Rz.w.series.values('rad/s')*VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS;
-simlog_vRL  = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Revolute_RL.Rz.w.series.values('rad/s')*VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS;
-simlog_vRR  = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Revolute_RR.Rz.w.series.values('rad/s')*VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS;
-simlog_Veh  = logsout_sm_vehicle_2axle_heave_roll.get('Vehicle');
+simlog_t    = simlogRes.Vehicle.Revolute_FL.Rz.w.series.time;
+simlog_vFL  = simlogRes.Vehicle.Revolute_FL.Rz.w.series.values('rad/s')*whlRadF;
+simlog_vFR  = simlogRes.Vehicle.Revolute_FR.Rz.w.series.values('rad/s')*whlRadF;
+simlog_vRL  = simlogRes.Vehicle.Revolute_RL.Rz.w.series.values('rad/s')*whlRadR;
+simlog_vRR  = simlogRes.Vehicle.Revolute_RR.Rz.w.series.values('rad/s')*whlRadR;
+simlog_Veh  = logsoutRes.get('Vehicle');
 simlog_vVeh = simlog_Veh.Values.Body.vx.Data;
 
 % Plot results
@@ -44,8 +49,4 @@ title('Wheel Speeds and Vehicle Speed')
 grid on
 legend({'Vehicle','FL','FR','RL','RR'},'Location','Best');
 text(0.05,0.05,'Wheel Speeds estimated with unloaded radius','Units','normalized','Color',[0.6 0.6 0.6])
-
-% Remove temporary variables
-clear simlog_t simlog_handles
-clear simlog_vFL simlog_vFR simlog_vRL simlog_vRR
 

@@ -11,6 +11,8 @@ The **[Simscape Multibody Tire Model](https://www.mathworks.com/help/physmod/sm/
 * **Traversing a Plateau** to test the effect of road slope 
 * **Parking Lot Maneuver** to test behavior at zero speed
 * **Slalom on a Hill** to test behavior at low speed and in reverse
+* **Rough Road** to show road definitions using surface data in MATLAB
+* **Icy Surface** to test braking systems on surfaces with varying friction 
 
 Open the project file sm_vehicle_heave_roll.prj to get started.
 
@@ -37,6 +39,7 @@ To learn more about vehicle modeling and simulation with Simscape, please visit:
 * [Simscape Vehicle Templates](https://www.mathworks.com/solutions/physical-modeling/simscape-vehicle-templates.html)
 * See also:
    * [Simscape&trade;](https://www.mathworks.com/products/simscape.html)
+   * [Simscape Battery&trade;](https://www.mathworks.com/products/simscape-battery.html)
    * [Simscape Driveline&trade;](https://www.mathworks.com/products/simscape-driveline.html)
    * [Simscape Electrical&trade;](https://www.mathworks.com/products/simscape-electrical.html)
    * [Simscape Fluids&trade;](https://www.mathworks.com/products/simscape-fluids.html)

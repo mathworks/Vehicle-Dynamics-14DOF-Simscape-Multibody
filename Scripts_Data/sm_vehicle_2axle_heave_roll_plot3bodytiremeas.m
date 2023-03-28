@@ -1,26 +1,31 @@
+function sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsoutRes)
 % Code to plot simulation results from sm_vehicle_2axle_heave_roll
 %% Plot Description:
 %
 % The plots below shows the body roll and pitch angles, as well as the
 % normal forces on the tires.
 
-% Copyright 2021-2022 The MathWorks, Inc.
-
-% Generate simulation results if they don't exist
-if ~exist('simlog_sm_vehicle_2axle_heave_roll', 'var')
-    sim('sm_vehicle_2axle_heave_roll')
-end
+% Copyright 2021-2023 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
-if ~exist('h3_sm_vehicle_2axle_heave_roll', 'var') || ...
-        ~isgraphics(h3_sm_vehicle_2axle_heave_roll, 'figure')
-    h3_sm_vehicle_2axle_heave_roll = figure('Name', 'sm_vehicle_2axle_heave_roll');
+figString = ['h1_' mfilename];
+% Only create a figure if no figure exists
+figExist = 0;
+fig_hExist = evalin('base',['exist(''' figString ''')']);
+if (fig_hExist)
+    figExist = evalin('base',['ishandle(' figString ') && strcmp(get(' figString ', ''type''), ''figure'')']);
 end
-figure(h3_sm_vehicle_2axle_heave_roll)
-clf(h3_sm_vehicle_2axle_heave_roll)
+if ~figExist
+    fig_h = figure('Name',figString);
+    assignin('base',figString,fig_h);
+else
+    fig_h = evalin('base',figString);
+end
+figure(fig_h)
+clf(fig_h)
 
 % Get simulation results
-simlog_Veh  = logsout_sm_vehicle_2axle_heave_roll.get('Vehicle');
+simlog_Veh  = logsoutRes.get('Vehicle');
 simlog_t    = simlog_Veh.Values.Body.aRoll.Time;
 simlog_rollVeh  = simlog_Veh.Values.Body.aRoll.Data(:);
 simlog_pitchVeh = simlog_Veh.Values.Body.aPitch.Data(:);

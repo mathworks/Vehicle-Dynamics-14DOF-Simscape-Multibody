@@ -22,7 +22,7 @@ ROTATION_ANGLE_XY_PLANE =    0   $ definition of the positive X-axis of the road
 $
 $   X_road   Z_left   Z_right
 (XZ_DATA)
-   -10000.0000   0.0000   0.0000
+   -5.0000   0.0000   0.0000
    0.0000   0.0000   0.0000
    5.0000   0.0000   0.0000
    10.0000   0.0000   0.0000

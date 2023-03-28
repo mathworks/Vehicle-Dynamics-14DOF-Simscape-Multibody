@@ -1,5 +1,11 @@
 %% Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)
 % 
+% <<sm_vehicle_2axle_heave_roll_modelAnim.png>>
+% 
+% <matlab:open_system('sm_vehicle_2axle_heave_roll') Open Vehicle Dynamics, 14 DOF Model>
+%
+% (<matlab:web('sm_vehicle_2axle_heave_roll_Overview.html') return to Vehicle Dynamics Overview>)
+% 
 % This example models vehicle dynamics using a vehicle model that has 14
 % degrees of freedom.  The driver inputs and scene where the vehicle is
 % driving can be configured as you select one of the maneuvers.
@@ -23,7 +29,7 @@
 % Institute of Technology, Madras for providing the tire parameters for
 % this example.
 %
-% Copyright 2021-2022 The MathWorks, Inc.
+% Copyright 2021-2023 The MathWorks, Inc.
 
 
 %% Model
@@ -47,72 +53,64 @@ open_system('sm_vehicle_2axle_heave_roll/Vehicle/Wheel FL','force')
 %
 % The plot below shows the wheel speeds during the maneuver.  The
 % rotational wheel speeds are scaled by the unloaded radius so they can be
-% compared with the translational speed of the vehicle.
+% compared with the translational speed of the vehicle. Additional plots
+% below show vehicle position, body roll angle, body pitch angle, and tire
+% normal forces.
+
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'stepsteer')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plot below shows the position of the vehicle during the maneuver.
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
 
-sm_vehicle_2axle_heave_roll_plot2bodypos;
-
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot2bodypos(simlog_sm_vehicle_2axle_heave_roll);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
 %% Simulation Results from Simscape Logging, Sine with Dwell
 %%
 %
 % The plot below shows the wheel speeds during the maneuver.  The
 % rotational wheel speeds are scaled by the unloaded radius so they can be
-% compared with the translational speed of the vehicle.
+% compared with the translational speed of the vehicle. Additional plots
+% below show vehicle position, body roll angle, body pitch angle, and tire
+% normal forces.
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'sinewithdwell')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plot below shows the position of the vehicle during the maneuver.
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
 
-sm_vehicle_2axle_heave_roll_plot2bodypos;
-
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot2bodypos(simlog_sm_vehicle_2axle_heave_roll);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
 %% Simulation Results from Simscape Logging, Slalom
 %%
 %
 % The plot below shows the wheel speeds during the maneuver.  The
 % rotational wheel speeds are scaled by the unloaded radius so they can be
-% compared with the translational speed of the vehicle.
+% compared with the translational speed of the vehicle. Additional plots
+% below show vehicle position, body roll angle, body pitch angle, and tire
+% normal forces.
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'slalom')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plot below shows the position of the vehicle during the maneuver.
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
 
-sm_vehicle_2axle_heave_roll_plot2bodypos;
-
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot2bodypos(simlog_sm_vehicle_2axle_heave_roll);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
 %% Simulation Results from Simscape Logging, Slalom on Hill
 %%
@@ -124,18 +122,19 @@ sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
 % 
 % The plot below shows the wheel speeds during the maneuver.  The
 % rotational wheel speeds are scaled by the unloaded radius so they can be
-% compared with the translational speed of the vehicle. 
+% compared with the translational speed of the vehicle. An additional plot
+% below shows vehicle position.
 %
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'slalomhill')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plot below shows the position of the vehicle during the maneuver.
-
-sm_vehicle_2axle_heave_roll_plot2bodypos;
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
+sm_vehicle_2axle_heave_roll_plot2bodypos(simlog_sm_vehicle_2axle_heave_roll);
 
 %% Simulation Results from Simscape Logging, Plateau
 %%
@@ -148,37 +147,37 @@ sm_vehicle_2axle_heave_roll_plot2bodypos;
 % compared with the translational speed of the vehicle.  The vehicle speed
 % drops as it climbs the hill, and then it increases again as it coasts
 % down the other side.  This shows that the tire model takes into account
-% the slope of the road.
+% the slope of the road. Additional plots below show body roll angle, body
+% pitch angle, and tire normal forces.
 %
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'plateau')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
 %% Simulation Results from Simscape Logging, Rough Road
 %%
 % In this maneuver, the vehicle is in motion at the start of the
 % simulation.  It coasts along an uneven road which exercises the
-% suspension and causes the car to pitch and roll.
+% suspension and causes the car to pitch and roll. Additional plots below
+% show body roll angle, body pitch angle, and tire normal forces.
 %
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'rough road')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
 
 %% Simulation Results from Simscape Logging, Parking
@@ -190,19 +189,19 @@ sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
 % 
 % The plot below shows the wheel speeds during the maneuver.  The
 % rotational wheel speeds are scaled by the unloaded radius so they can be
-% compared with the translational speed of the vehicle.  
+% compared with the translational speed of the vehicle.  Additional plots
+% below show body roll angle, body pitch angle, and tire normal forces.
 %
 
 sm_vehicle_2axle_heave_roll_config_maneuver('sm_vehicle_2axle_heave_roll',VehicleData,'parking')
 sim('sm_vehicle_2axle_heave_roll')
-sm_vehicle_2axle_heave_roll_plot1whlspd;
 
-%%
-%
-% The plots below shows the body roll and pitch angles, as well as the
-% normal forces on the tires.
-
-sm_vehicle_2axle_heave_roll_plot3bodytiremeas;
+sm_vehicle_2axle_heave_roll_plot1whlspd(...
+    simlog_sm_vehicle_2axle_heave_roll,...
+    logsout_sm_vehicle_2axle_heave_roll,...
+    VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS,...
+    VehicleData.TireDataR.param.DIMENSION.UNLOADED_RADIUS);
+sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsout_sm_vehicle_2axle_heave_roll);
 
                         
 %%

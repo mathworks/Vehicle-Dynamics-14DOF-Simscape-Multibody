@@ -7,7 +7,7 @@ function sm_vehicle_2axle_heave_roll_config_maneuver(mdl,VehicleData,tire_test)
 %   tire_test     'slalom','slalomhill','parking','sinewithdwell',
 % %               'stepsteer','plateau'
 %
-% Copyright 2021-2022 The MathWorks, Inc.
+% Copyright 2021-2023 The MathWorks, Inc.
 
 % Defaults for vehicle initial position in World coordinate frame
 InitVehicle.Vehicle.px = 0;  % m
@@ -75,9 +75,14 @@ switch lower(tire_test)
 end
 
 % Configure scene and driver input
-set_param([mdl '/Vehicle'],'popup_scene',scene_type);
-set_param([mdl '/Vehicle'],'popup_road_surface',road_surface_type);
-set_param([mdl '/Steering Input'],'LabelModeActiveChoice',driver_input);
+vehBlkParam = get_param([mdl '/Vehicle'], 'DialogParameters');
+if(isfield(vehBlkParam, 'popup_scene'))
+    set_param([mdl '/Vehicle'],'popup_scene',scene_type);
+end
+if(isfield(vehBlkParam, 'popup_road_surface'))
+    set_param([mdl '/Vehicle'],'popup_road_surface',road_surface_type);
+end
+set_param([mdl '/Driver Input'],'LabelModeActiveChoice',driver_input);
 
 % Set initial position and speed of vehicle and wheels
 InitVehicle.Wheel.wFL = InitVehicle.Vehicle.vx/VehicleData.TireDataF.param.DIMENSION.UNLOADED_RADIUS; %rad/s

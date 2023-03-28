@@ -1,26 +1,31 @@
+function sm_vehicle_2axle_heave_roll_plot2bodypos(simlogRes)
 % Code to plot simulation results from sm_vehicle_2axle_heave_roll
 %% Plot Description:
 %
 % The plot below shows the position of the vehicle during the maneuver.
 
-% Copyright 2021-2022 The MathWorks, Inc.
-
-% Generate simulation results if they don't exist
-if ~exist('simlog_sm_vehicle_2axle_heave_roll', 'var')
-    sim('sm_vehicle_2axle_heave_roll')
-end
+% Copyright 2021-2023 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
-if ~exist('h2_sm_vehicle_2axle_heave_roll', 'var') || ...
-        ~isgraphics(h2_sm_vehicle_2axle_heave_roll, 'figure')
-    h2_sm_vehicle_2axle_heave_roll = figure('Name', 'sm_vehicle_2axle_heave_roll');
+figString = ['h1_' mfilename];
+% Only create a figure if no figure exists
+figExist = 0;
+fig_hExist = evalin('base',['exist(''' figString ''')']);
+if (fig_hExist)
+    figExist = evalin('base',['ishandle(' figString ') && strcmp(get(' figString ', ''type''), ''figure'')']);
 end
-figure(h2_sm_vehicle_2axle_heave_roll)
-clf(h2_sm_vehicle_2axle_heave_roll)
+if ~figExist
+    fig_h = figure('Name',figString);
+    assignin('base',figString,fig_h);
+else
+    fig_h = evalin('base',figString);
+end
+figure(fig_h)
+clf(fig_h)
 
 % Get simulation results
-simlog_xVeh = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Body_to_World.Body_World_Joint.Px.p.series.values;
-simlog_yVeh = simlog_sm_vehicle_2axle_heave_roll.Vehicle.Body_to_World.Body_World_Joint.Py.p.series.values;
+simlog_xVeh = simlogRes.Vehicle.Body_to_World.Body_World_Joint.Px.p.series.values;
+simlog_yVeh = simlogRes.Vehicle.Body_to_World.Body_World_Joint.Py.p.series.values;
 
 % Plot results
 plot(simlog_xVeh, simlog_yVeh, 'LineWidth', 1)
@@ -31,7 +36,5 @@ grid on
 axis equal
 text(0.05,0.05,['Final Position: ' sprintf('%3.2fm, %3.2fm',simlog_xVeh(end),simlog_yVeh(end))],'Color',[0.6 0.6 0.6],'Units','Normalized')
 
-% Remove temporary variables
-clear simlog_t simlog_handles
-clear simlog_xVeh simlog_yVeh
+
 
