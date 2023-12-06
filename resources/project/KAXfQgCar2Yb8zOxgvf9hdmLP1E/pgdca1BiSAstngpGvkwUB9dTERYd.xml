@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="Basic" GroupUUID="3497918d-c8a2-49c7-bc76-3fd6c03e0a27" Visible="1" Icon="" File="Models/sm_vehicle_2axle_heave_roll.slx" Name="Vehicle"/>
+<Info File="Models/sm_vehicle_2axle_heave_roll.slx" GroupUUID="3497918d-c8a2-49c7-bc76-3fd6c03e0a27" Icon="" Name="Vehicle" Type="Basic" Visible="1"/>

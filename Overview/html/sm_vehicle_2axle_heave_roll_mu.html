@@ -1,12 +1,17 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Vehicle Dynamics, 14 DOF Model, Varying Surface Friction</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-03-28"><meta name="DC.source" content="sm_vehicle_2axle_heave_roll_mu.m"><style type="text/css">
+      -->
+<title>Vehicle Dynamics, 14 DOF Model, Varying Surface Friction</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2023-09-15">
+<meta name="DC.source" content="sm_vehicle_2axle_heave_roll_mu.m">
+<style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +72,162 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Vehicle Dynamics, 14 DOF Model, Varying Surface Friction</h1><!--introduction--><p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_modelAnim.png" alt=""> </p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu')">Open Vehicle, 14 DOF Model, Varying Surface Friction</a></p><p>(<a href="matlab:web('sm_vehicle_2axle_heave_roll_Overview.html')">return to Vehicle Dynamics Overview</a>)</p><p>This model shows an anti-lock braking system in various stages of development.</p><div><ol><li><b>Variable Damper</b>: A variable damper is used to apply braking torque. This lets you assess the amount of torque the brakes need to provide so you can select a brake type.</li><li><b>Ideal Brake Actuator</b>: An ideal pressure source applies force to a disk caliper.  This lets you calculate the force the caliper actuators need to provide so you can size the calipers and pump.</li><li><b>Hydraulic Brake Actuator</b>: An ideal hydraulic actuator applies force to a disk brake.  This lets you size the valves and pumps for the hydraulic system.</li><li><b>Valve-Driven Actuator</b>: Pressure is applied and released via valves in open-loop control.  This lets you select the valve sizes.</li><li><b>Closed-Loop Control</b>: Pressure is applied and released via valves in closed-loop control.  This lets you design the control algorithm.</li></ol></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Model</a></li><li><a href="#2">Vehicle Subsystem</a></li><li><a href="#3">1. Variable Damper</a></li><li><a href="#4">-- Variable Damper Brake Torque</a></li><li><a href="#5">-- Simulation Results, Right Side Ice Patch</a></li><li><a href="#6">2. Ideal Caliper Actuator</a></li><li><a href="#7">-- Disk Brakes</a></li><li><a href="#8">-- Ideal Actuator for Caliper</a></li><li><a href="#9">-- Simulation Results, Right Side Ice Patch</a></li><li><a href="#10">3. Hydraulic Brake Actuator</a></li><li><a href="#11">-- Hydraulic Network, Ideal Hydraulic Caliper Actuators</a></li><li><a href="#12">-- Simulation Results, Right Side Ice Patch</a></li><li><a href="#13">4. Valve-Driven Actuator, Open-Loop Control</a></li><li><a href="#14">-- Hydraulic Network, Valve-Actuated Calipers</a></li><li><a href="#15">-- Apply and Release Valves</a></li><li><a href="#16">-- Simulation Results, Right Side Ice Patch</a></li><li><a href="#17">5. Valve-Driven Actuator, Closed-Loop Control</a></li><li><a href="#18">-- Control System for Front Left Valves</a></li><li><a href="#19">-- Simulation Results, Right Side Ice Patch</a></li><li><a href="#20">-- Simulation Results, Checkerboard, Right Low</a></li></ul></div><h2 id="1">Model</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_01.png" alt=""> <h2 id="2">Vehicle Subsystem</h2><p>This subsystem models lateral and longitudinal vehicle dynamics, including front-rear weight transfer, and tire-road forces.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Vehicle','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_02.png" alt=""> <h2 id="3">1. Variable Damper</h2><p>In this configuration, brake torque is applied via a variable damper. The damping is a fixed amount and duration, resulting in open-loop control. This test is useful to assess the torque required to slow the vehicle.</p><h2 id="4">-- Variable Damper Brake Torque</h2><p>This subsystem models the brakes as a variable damper. This is a simple means of applying braking torque to the axle, and can be used to estimate the amount of torque required to stop a vehicle.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Damper');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Damper','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_03.png" alt=""> <h2 id="5">-- Simulation Results, Right Side Ice Patch</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_04.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_05.png" alt=""> <h2 id="6">2. Ideal Caliper Actuator</h2><p>In this configuration, brake torque is applied via a disc brake model and an ideal force actuator applies pressure.  Brake control is still open-loop (fixed duration and frequency of pulses).</p><h2 id="7">-- Disk Brakes</h2><p>This subsystem models the disk brakes on a vehicle.  The actuator can be configured for various levels of abstraction.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_06.png" alt=""> <h2 id="8">-- Ideal Actuator for Caliper</h2><p>This subsystem models the force applied to the brake caliper.  This is an ideal actuator with a filter time constant to model actuator dynamics.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Ideal','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_07.png" alt=""> <h2 id="9">-- Simulation Results, Right Side Ice Patch</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_08.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_09.png" alt=""> <h2 id="10">3. Hydraulic Brake Actuator</h2><p>In this configuration, brake torque is applied via a disc brake model and separate ideal pressure sources apply pressure at each piston. Brake control is still open-loop (fixed duration and frequency of pulses). This configuration is used to size the piston and determine flow rates.</p><h2 id="11">-- Hydraulic Network, Ideal Hydraulic Caliper Actuators</h2><p>This subsystem models an ideal hydraulic actuation system for the caliper system. It assumes the necessary pressure is always available for use at the caliper.  A filter time constant is included for actuator dynamics.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Hydraulic','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_10.png" alt=""> <h2 id="12">-- Simulation Results, Right Side Ice Patch</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_11.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_12.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_13.png" alt=""> <h2 id="13">4. Valve-Driven Actuator, Open-Loop Control</h2><p>In this configuration, brake torque is applied via a disc brake model and an pressure is applied and released via valves.  An ideal pressure source represents the pump. Brake control is still open-loop (fixed duration and frequency of pulses).  This configuration is used to size the valves and determine flow rates.</p><h2 id="14">-- Hydraulic Network, Valve-Actuated Calipers</h2><p>At this level, a single ideal pressure source represents the master cylinder. Input signals control the apply and release valves.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Valves','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_14.png" alt=""> <h2 id="15">-- Apply and Release Valves</h2><p>Variable orifices represent the apply and release valves, which control the flow of hydraulic fluid to and from the brake caliper.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Valves/Valves%20FL','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_15.png" alt=""> <h2 id="16">-- Simulation Results, Right Side Ice Patch</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_16.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_17.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_18.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_19.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_20.png" alt=""> <h2 id="17">5. Valve-Driven Actuator, Closed-Loop Control</h2><p>In this configuration, brake torque is applied via a disc brake model and an pressure is applied and released via valves.  An ideal pressure source represents the pump. Brake control is still open-loop (fixed duration and frequency of pulses).  This configuration is used to size the valves and determine flow rates.</p><h2 id="18">-- Control System for Front Left Valves</h2><p>This state machine determines if the pressure should be increased, released, or held constant. The decision concerning pressure determines whether the apply and release values should be open or closed.</p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brake%20Control/Valve%20Closed%20Loop/Valve%20Control%20FL/Logic','force');">Open Subsystem</a></p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_21.png" alt=""> <h2 id="19">-- Simulation Results, Right Side Ice Patch</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_22.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_23.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_24.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_25.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_26.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_27.png" alt=""> <h2 id="20">-- Simulation Results, Checkerboard, Right Low</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_28.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_29.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_30.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_31.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_32.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_33.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_34.png" alt=""> <p class="footer">Copyright 2019-2023 The MathWorks, Inc.<br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Vehicle Dynamics, 14 DOF Model, Varying Surface Friction</h1>
+<!--introduction-->
+<p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_modelAnim.png" alt=""> </p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu')">Open Vehicle, 14 DOF Model, Varying Surface Friction</a>
+</p>
+<p>(<a href="matlab:web('sm_vehicle_2axle_heave_roll_Overview.html')">return to Vehicle Dynamics Overview</a>)</p>
+<p>This model shows an anti-lock braking system in various stages of development.</p>
+<div>
+<ol>
+<li>
+<b>Variable Damper</b>: A variable damper is used to apply braking torque. This lets you assess the amount of torque the brakes need to provide so you can select a brake type.</li>
+<li>
+<b>Ideal Brake Actuator</b>: An ideal pressure source applies force to a disk caliper. This lets you calculate the force the caliper actuators need to provide so you can size the calipers and pump.</li>
+<li>
+<b>Hydraulic Brake Actuator</b>: An ideal hydraulic actuator applies force to a disk brake. This lets you size the valves and pumps for the hydraulic system.</li>
+<li>
+<b>Valve-Driven Actuator</b>: Pressure is applied and released via valves in open-loop control. This lets you select the valve sizes.</li>
+<li>
+<b>Closed-Loop Control</b>: Pressure is applied and released via valves in closed-loop control. This lets you design the control algorithm.</li>
+</ol>
+</div>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Model</a>
+</li>
+<li>
+<a href="#2">Vehicle Subsystem</a>
+</li>
+<li>
+<a href="#3">1. Variable Damper</a>
+</li>
+<li>
+<a href="#4">-- Variable Damper Brake Torque</a>
+</li>
+<li>
+<a href="#5">-- Simulation Results, Right Side Ice Patch</a>
+</li>
+<li>
+<a href="#6">2. Ideal Caliper Actuator</a>
+</li>
+<li>
+<a href="#7">-- Disk Brakes</a>
+</li>
+<li>
+<a href="#8">-- Ideal Actuator for Caliper</a>
+</li>
+<li>
+<a href="#9">-- Simulation Results, Right Side Ice Patch</a>
+</li>
+<li>
+<a href="#10">3. Hydraulic Brake Actuator</a>
+</li>
+<li>
+<a href="#11">-- Hydraulic Network, Ideal Hydraulic Caliper Actuators</a>
+</li>
+<li>
+<a href="#12">-- Simulation Results, Right Side Ice Patch</a>
+</li>
+<li>
+<a href="#13">4. Valve-Driven Actuator, Open-Loop Control</a>
+</li>
+<li>
+<a href="#14">-- Hydraulic Network, Valve-Actuated Calipers</a>
+</li>
+<li>
+<a href="#15">-- Apply and Release Valves</a>
+</li>
+<li>
+<a href="#16">-- Simulation Results, Right Side Ice Patch</a>
+</li>
+<li>
+<a href="#17">5. Valve-Driven Actuator, Closed-Loop Control</a>
+</li>
+<li>
+<a href="#18">-- Control System for Front Left Valves</a>
+</li>
+<li>
+<a href="#19">-- Simulation Results, Right Side Ice Patch</a>
+</li>
+<li>
+<a href="#20">-- Simulation Results, Checkerboard, Right Low</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Model</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_01.png" alt=""> <h2 id="2">Vehicle Subsystem</h2>
+<p>This subsystem models lateral and longitudinal vehicle dynamics, including front-rear weight transfer, and tire-road forces.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Vehicle','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_02.png" alt=""> <h2 id="3">1. Variable Damper</h2>
+<p>In this configuration, brake torque is applied via a variable damper. The damping is a fixed amount and duration, resulting in open-loop control. This test is useful to assess the torque required to slow the vehicle.</p>
+<h2 id="4">-- Variable Damper Brake Torque</h2>
+<p>This subsystem models the brakes as a variable damper. This is a simple means of applying braking torque to the axle, and can be used to estimate the amount of torque required to stop a vehicle.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Damper');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Damper','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_03.png" alt=""> <h2 id="5">-- Simulation Results, Right Side Ice Patch</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_04.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_05.png" alt=""> <h2 id="6">2. Ideal Caliper Actuator</h2>
+<p>In this configuration, brake torque is applied via a disc brake model and an ideal force actuator applies pressure. Brake control is still open-loop (fixed duration and frequency of pulses).</p>
+<h2 id="7">-- Disk Brakes</h2>
+<p>This subsystem models the disk brakes on a vehicle. The actuator can be configured for various levels of abstraction.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_06.png" alt=""> <h2 id="8">-- Ideal Actuator for Caliper</h2>
+<p>This subsystem models the force applied to the brake caliper. This is an ideal actuator with a filter time constant to model actuator dynamics.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Ideal','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_07.png" alt=""> <h2 id="9">-- Simulation Results, Right Side Ice Patch</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_08.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_09.png" alt=""> <h2 id="10">3. Hydraulic Brake Actuator</h2>
+<p>In this configuration, brake torque is applied via a disc brake model and separate ideal pressure sources apply pressure at each piston. Brake control is still open-loop (fixed duration and frequency of pulses). This configuration is used to size the piston and determine flow rates.</p>
+<h2 id="11">-- Hydraulic Network, Ideal Hydraulic Caliper Actuators</h2>
+<p>This subsystem models an ideal hydraulic actuation system for the caliper system. It assumes the necessary pressure is always available for use at the caliper. A filter time constant is included for actuator dynamics.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Hydraulic','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_10.png" alt=""> <h2 id="12">-- Simulation Results, Right Side Ice Patch</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_11.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_12.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_13.png" alt=""> <h2 id="13">4. Valve-Driven Actuator, Open-Loop Control</h2>
+<p>In this configuration, brake torque is applied via a disc brake model and an pressure is applied and released via valves. An ideal pressure source represents the pump. Brake control is still open-loop (fixed duration and frequency of pulses). This configuration is used to size the valves and determine flow rates.</p>
+<h2 id="14">-- Hydraulic Network, Valve-Actuated Calipers</h2>
+<p>At this level, a single ideal pressure source represents the master cylinder. Input signals control the apply and release valves.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Valves','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_14.png" alt=""> <h2 id="15">-- Apply and Release Valves</h2>
+<p>Variable orifices represent the apply and release valves, which control the flow of hydraulic fluid to and from the brake caliper.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brakes/Brakes/Disc/Actuator/Valves/Valves%20FL','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_15.png" alt=""> <h2 id="16">-- Simulation Results, Right Side Ice Patch</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_16.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_17.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_18.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_19.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_20.png" alt=""> <h2 id="17">5. Valve-Driven Actuator, Closed-Loop Control</h2>
+<p>In this configuration, brake torque is applied via a disc brake model and an pressure is applied and released via valves. An ideal pressure source represents the pump. Brake control is still open-loop (fixed duration and frequency of pulses). This configuration is used to size the valves and determine flow rates.</p>
+<h2 id="18">-- Control System for Front Left Valves</h2>
+<p>This state machine determines if the pressure should be increased, released, or held constant. The decision concerning pressure determines whether the apply and release values should be open or closed.</p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll_mu');open_system('sm_vehicle_2axle_heave_roll_mu/Brake%20Control/Valve%20Closed%20Loop/Valve%20Control%20FL/Logic','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_21.png" alt=""> <h2 id="19">-- Simulation Results, Right Side Ice Patch</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_22.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_23.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_24.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_25.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_26.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_27.png" alt=""> <h2 id="20">-- Simulation Results, Checkerboard, Right Low</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_28.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_29.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_30.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_31.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_32.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_33.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_mu_34.png" alt=""> <p class="footer">Copyright 2019-2023 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
 ##### SOURCE BEGIN #####
 %% Vehicle Dynamics, 14 DOF Model, Varying Surface Friction
 % 
@@ -358,4 +518,6 @@ close all
 bdclose all
 
 ##### SOURCE END #####
---></body></html>
+-->
+</body>
+</html>

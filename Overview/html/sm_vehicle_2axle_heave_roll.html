@@ -1,12 +1,17 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-03-28"><meta name="DC.source" content="sm_vehicle_2axle_heave_roll.m"><style type="text/css">
+      -->
+<title>Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2023-09-15">
+<meta name="DC.source" content="sm_vehicle_2axle_heave_roll.m">
+<style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +72,86 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)</h1><!--introduction--><p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_modelAnim.png" alt=""> </p><p><a href="matlab:open_system('sm_vehicle_2axle_heave_roll')">Open Vehicle Dynamics, 14 DOF Model</a></p><p>(<a href="matlab:web('sm_vehicle_2axle_heave_roll_Overview.html')">return to Vehicle Dynamics Overview</a>)</p><p>This example models vehicle dynamics using a vehicle model that has 14 degrees of freedom.  The driver inputs and scene where the vehicle is driving can be configured as you select one of the maneuvers.</p><p>The vehicle model includes a six degree-of-freedom body model, two axles each with heave and roll degrees of freedom, and four wheels that rotate.  The front wheels are steered using the Ackermann steering equation.  Many of the vehicle parameters can be modified using MATLAB.</p><p>The tire model is the Magic Formula Tire Force and Torque block from Simscape Multibody.  You can plot the forces and torques at the contact patch from the simulation results.</p><p>Explore the <a href="https://www.mathworks.com/matlabcentral/fileexchange/79484">Simscape Vehicle Templates</a> for more customizable models of battery-electric vehicles, hybrid-electric, and multi-axle vehicles.</p><p><b>Acknowledgements:</b> MathWorks would like to thank M V Krishna Teja, PhD, <a href="https://prof-rkkumar.wixsite.com/iitm-vpg-lab">Virtual Proving Ground and Simulation Lab</a>, Raghupati Singhania Centre of Excellence at the Indian Institute of Technology, Madras for providing the tire parameters for this example.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Model</a></li><li><a href="#2">Vehicle Model</a></li><li><a href="#3">Tire Model</a></li><li><a href="#4">Simulation Results from Simscape Logging, Step Steer</a></li><li><a href="#6">Simulation Results from Simscape Logging, Sine with Dwell</a></li><li><a href="#8">Simulation Results from Simscape Logging, Slalom</a></li><li><a href="#10">Simulation Results from Simscape Logging, Slalom on Hill</a></li><li><a href="#12">Simulation Results from Simscape Logging, Plateau</a></li><li><a href="#14">Simulation Results from Simscape Logging, Rough Road</a></li><li><a href="#16">Simulation Results from Simscape Logging, Parking</a></li></ul></div><h2 id="1">Model</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_01.png" alt=""> <h2 id="2">Vehicle Model</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_02.png" alt=""> <h2 id="3">Tire Model</h2><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_03.png" alt=""> <h2 id="4">Simulation Results from Simscape Logging, Step Steer</h2><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_04.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_05.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_06.png" alt=""> <h2 id="6">Simulation Results from Simscape Logging, Sine with Dwell</h2><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_07.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_08.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_09.png" alt=""> <h2 id="8">Simulation Results from Simscape Logging, Slalom</h2><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_10.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_11.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_12.png" alt=""> <h2 id="10">Simulation Results from Simscape Logging, Slalom on Hill</h2><p>In this maneuver, the vehicle is in motion at the start of the simulation.  It coasts up a hill, and when its momentum cannot carry it any further it rolls back down the hill.  The driver moves the steering wheel back and forth.  This tests the tire model on a hill with a slope, at low speeds, and in both forward and reverse directions.</p><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. An additional plot below shows vehicle position.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_13.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_14.png" alt=""> <h2 id="12">Simulation Results from Simscape Logging, Plateau</h2><p>In this maneuver, the vehicle is in motion at the start of the simulation.  It coasts up a hill, rolls across the top, and then coasts down the hill on the other side.</p><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle.  The vehicle speed drops as it climbs the hill, and then it increases again as it coasts down the other side.  This shows that the tire model takes into account the slope of the road. Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_15.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_16.png" alt=""> <h2 id="14">Simulation Results from Simscape Logging, Rough Road</h2><p>In this maneuver, the vehicle is in motion at the start of the simulation.  It coasts along an uneven road which exercises the suspension and causes the car to pitch and roll. Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_17.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_18.png" alt=""> <h2 id="16">Simulation Results from Simscape Logging, Parking</h2><p>In this maneuver, the vehicle is resting at the side of the road.  The driver steers the wheels before accelerating away from the side of the road. This tests the tire turning on the spot, as well as accelerating away from rest.</p><p>The plot below shows the wheel speeds during the maneuver.  The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle.  Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p><img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_19.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_20.png" alt=""> <p class="footer">Copyright 2021-2023 The MathWorks, Inc.<br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)</h1>
+<!--introduction-->
+<p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_modelAnim.png" alt=""> </p>
+<p>
+<a href="matlab:open_system('sm_vehicle_2axle_heave_roll')">Open Vehicle Dynamics, 14 DOF Model</a>
+</p>
+<p>(<a href="matlab:web('sm_vehicle_2axle_heave_roll_Overview.html')">return to Vehicle Dynamics Overview</a>)</p>
+<p>This example models vehicle dynamics using a vehicle model that has 14 degrees of freedom. The driver inputs and scene where the vehicle is driving can be configured as you select one of the maneuvers.</p>
+<p>The vehicle model includes a six degree-of-freedom body model, two axles each with heave and roll degrees of freedom, and four wheels that rotate. The front wheels are steered using the Ackermann steering equation. Many of the vehicle parameters can be modified using MATLAB.</p>
+<p>The tire model is the Magic Formula Tire Force and Torque block from Simscape Multibody. You can plot the forces and torques at the contact patch from the simulation results.</p>
+<p>Explore the <a href="https://www.mathworks.com/matlabcentral/fileexchange/79484">Simscape Vehicle Templates</a> for more customizable models of battery-electric vehicles, hybrid-electric, and multi-axle vehicles.</p>
+<p>
+<b>Acknowledgements:</b> MathWorks would like to thank M V Krishna Teja, PhD, <a href="https://prof-rkkumar.wixsite.com/iitm-vpg-lab">Virtual Proving Ground and Simulation Lab</a>, Raghupati Singhania Centre of Excellence at the Indian Institute of Technology, Madras for providing the tire parameters for this example.</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Model</a>
+</li>
+<li>
+<a href="#2">Vehicle Model</a>
+</li>
+<li>
+<a href="#3">Tire Model</a>
+</li>
+<li>
+<a href="#4">Simulation Results from Simscape Logging, Step Steer</a>
+</li>
+<li>
+<a href="#6">Simulation Results from Simscape Logging, Sine with Dwell</a>
+</li>
+<li>
+<a href="#8">Simulation Results from Simscape Logging, Slalom</a>
+</li>
+<li>
+<a href="#10">Simulation Results from Simscape Logging, Slalom on Hill</a>
+</li>
+<li>
+<a href="#12">Simulation Results from Simscape Logging, Plateau</a>
+</li>
+<li>
+<a href="#14">Simulation Results from Simscape Logging, Rough Road</a>
+</li>
+<li>
+<a href="#16">Simulation Results from Simscape Logging, Parking</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Model</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_01.png" alt=""> <h2 id="2">Vehicle Model</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_02.png" alt=""> <h2 id="3">Tire Model</h2>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_03.png" alt=""> <h2 id="4">Simulation Results from Simscape Logging, Step Steer</h2>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_04.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_05.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_06.png" alt=""> <h2 id="6">Simulation Results from Simscape Logging, Sine with Dwell</h2>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_07.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_08.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_09.png" alt=""> <h2 id="8">Simulation Results from Simscape Logging, Slalom</h2>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show vehicle position, body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_10.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_11.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_12.png" alt=""> <h2 id="10">Simulation Results from Simscape Logging, Slalom on Hill</h2>
+<p>In this maneuver, the vehicle is in motion at the start of the simulation. It coasts up a hill, and when its momentum cannot carry it any further it rolls back down the hill. The driver moves the steering wheel back and forth. This tests the tire model on a hill with a slope, at low speeds, and in both forward and reverse directions.</p>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. An additional plot below shows vehicle position.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_13.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_14.png" alt=""> <h2 id="12">Simulation Results from Simscape Logging, Plateau</h2>
+<p>In this maneuver, the vehicle is in motion at the start of the simulation. It coasts up a hill, rolls across the top, and then coasts down the hill on the other side.</p>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. The vehicle speed drops as it climbs the hill, and then it increases again as it coasts down the other side. This shows that the tire model takes into account the slope of the road. Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_15.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_16.png" alt=""> <h2 id="14">Simulation Results from Simscape Logging, Rough Road</h2>
+<p>In this maneuver, the vehicle is in motion at the start of the simulation. It coasts along an uneven road which exercises the suspension and causes the car to pitch and roll. Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_17.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_18.png" alt=""> <h2 id="16">Simulation Results from Simscape Logging, Parking</h2>
+<p>In this maneuver, the vehicle is resting at the side of the road. The driver steers the wheels before accelerating away from the side of the road. This tests the tire turning on the spot, as well as accelerating away from rest.</p>
+<p>The plot below shows the wheel speeds during the maneuver. The rotational wheel speeds are scaled by the unloaded radius so they can be compared with the translational speed of the vehicle. Additional plots below show body roll angle, body pitch angle, and tire normal forces.</p>
+<img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_19.png" alt=""> <img vspace="5" hspace="5" src="sm_vehicle_2axle_heave_roll_20.png" alt=""> <p class="footer">Copyright 2021-2023 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
 ##### SOURCE BEGIN #####
 %% Vehicle Dynamics, 14 DOF Model (Heave and Roll DOFs Per Axle)
 % 
@@ -282,4 +366,6 @@ close all
 bdclose all
 
 ##### SOURCE END #####
---></body></html>
+-->
+</body>
+</html>

@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="StartUp" Visible="0" Icon="" File="Scripts_Data/startup_sm_vehicle_14dof.m" Name="startup_sm_vehicle_2axle_heave_roll"/>
+<Info File="Scripts_Data/startup_sm_vehicle_14dof.m" Icon="" Name="startup_sm_vehicle_2axle_heave_roll" Type="StartUp" Visible="0"/>
