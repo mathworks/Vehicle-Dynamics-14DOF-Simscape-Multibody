@@ -34,7 +34,7 @@
 % Institute of Technology, Madras for providing the tire parameters for
 % this example.
 %
-% Copyright 2021-2023 The MathWorks, Inc.
+% Copyright 2021-2024 The MathWorks, Inc.
 
 
 %% Model

@@ -23,7 +23,7 @@
 % # *Closed-Loop Control*: Pressure is applied and released via valves in
 % closed-loop control.  This lets you design the control algorithm.
 %
-% Copyright 2019-2023 The MathWorks, Inc.
+% Copyright 2019-2024 The MathWorks, Inc.
 
 %% Model
 

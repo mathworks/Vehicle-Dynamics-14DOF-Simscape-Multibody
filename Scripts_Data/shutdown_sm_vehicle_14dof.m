@@ -1,4 +1,4 @@
-%% Copyright 2021-2023 The MathWorks, Inc.
+%% Copyright 2021-2024 The MathWorks, Inc.
 % Add shutdown commands here
 
 if(exist('MFSwifttbx_folders','var'))

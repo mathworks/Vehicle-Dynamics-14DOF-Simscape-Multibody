@@ -4,7 +4,7 @@ function simlog_handles = sm_vehicle_2axle_heave_roll_plot3cylpress1plot(simlogR
 %
 % Plot caliper pressure and master cylinder pressure on a single plot.
 %
-% Copyright 2019-2023 The MathWorks, Inc.
+% Copyright 2019-2024 The MathWorks, Inc.
 
 
 % Only plot pressures if pressure data is present

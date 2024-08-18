@@ -4,7 +4,7 @@ function sm_vehicle_2axle_heave_roll_plot2bodypos(simlogRes)
 %
 % The plot below shows the position of the vehicle during the maneuver.
 
-% Copyright 2021-2023 The MathWorks, Inc.
+% Copyright 2021-2024 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
 figString = ['h1_' mfilename];

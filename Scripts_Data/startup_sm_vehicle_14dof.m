@@ -1,4 +1,4 @@
-%% Copyright 2021-2023 The MathWorks, Inc.
+%% Copyright 2021-2024 The MathWorks, Inc.
 
 % Add MF-Swift software to path if it can be found
 if(exist('sm_vehicle_startupMFSwift.m','file'))

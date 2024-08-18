@@ -5,7 +5,7 @@ function sm_vehicle_2axle_heave_roll_plot3bodytiremeas(logsoutRes)
 % The plots below shows the body roll and pitch angles, as well as the
 % normal forces on the tires.
 
-% Copyright 2021-2023 The MathWorks, Inc.
+% Copyright 2021-2024 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
 figString = ['h1_' mfilename];
@@ -29,6 +29,8 @@ simlog_Veh  = logsoutRes.get('Vehicle');
 simlog_t    = simlog_Veh.Values.Body.aRoll.Time;
 simlog_rollVeh  = simlog_Veh.Values.Body.aRoll.Data(:);
 simlog_pitchVeh = simlog_Veh.Values.Body.aPitch.Data(:);
+
+simlog_f_t     = simlog_Veh.Values.TireFL.Fz.Time;
 simlog_fnFL     = simlog_Veh.Values.TireFL.Fz.Data;
 simlog_fnFR     = simlog_Veh.Values.TireFR.Fz.Data;
 simlog_fnRL     = simlog_Veh.Values.TireRL.Fz.Data;
@@ -48,11 +50,11 @@ grid on
 legend('Location','Best');
 
 ah(2) = subplot(2,1,2);
-plot(simlog_t, simlog_fnFL, 'LineWidth', 1,'DisplayName','FL')
+plot(simlog_f_t, simlog_fnFL, 'LineWidth', 1,'DisplayName','FL')
 hold on
-plot(simlog_t, simlog_fnFR, 'LineWidth', 1,'DisplayName','FR')
-plot(simlog_t, simlog_fnRL, 'LineWidth', 1,'DisplayName','RL')
-plot(simlog_t, simlog_fnRR, 'LineWidth', 1,'DisplayName','RR')
+plot(simlog_f_t, simlog_fnFR, 'LineWidth', 1,'DisplayName','FR')
+plot(simlog_f_t, simlog_fnRL, 'LineWidth', 1,'DisplayName','RL')
+plot(simlog_f_t, simlog_fnRR, 'LineWidth', 1,'DisplayName','RR')
 hold off
 
 ylabel('Force (N)')

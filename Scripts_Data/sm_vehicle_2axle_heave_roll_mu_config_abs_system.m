@@ -1,5 +1,5 @@
 function sm_vehicle_2axle_heave_roll_mu_config_abs_system(b_h,brk_index)
-% Copyright 2019-2023 The MathWorks, Inc.
+% Copyright 2019-2024 The MathWorks, Inc.
 
 switch brk_index
     case 1 % 'damper'

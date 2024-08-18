@@ -12,5 +12,5 @@
 % # *<matlab:web('sm_vehicle_2axle_heave_roll_grid.html') Vehicle dynamics on uneven terrain>* defined by a regular or non-uniform grid in MATLAB.
 % # *<matlab:web('sm_vehicle_2axle_heave_roll_mu.html') Refine brake hardware and anti-lock braking algorithms>* on surface with adjustable icy patches.
 % 
-% Copyright 2021-2023 The MathWorks, Inc.
+% Copyright 2021-2024 The MathWorks, Inc.
 

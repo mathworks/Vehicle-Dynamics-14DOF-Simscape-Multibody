@@ -4,7 +4,7 @@ function simlog_handles = sm_vehicle_2axle_heave_roll_plot5valveq(simlogRes)
 %
 % Plot flow rate through apply and release valves
 %
-% Copyright 2019-2023 The MathWorks, Inc.
+% Copyright 2019-2024 The MathWorks, Inc.
 
 % Only plot valve measurements if data is present
 % (only present in valve actuator model)

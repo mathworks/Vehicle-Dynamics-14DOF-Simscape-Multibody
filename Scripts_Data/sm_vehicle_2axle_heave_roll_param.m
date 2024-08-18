@@ -1,5 +1,5 @@
 % Parameters for example sm_vehicle_2axle_heave_roll.slx
-% Copyright 2021-2023 The MathWorks, Inc.
+% Copyright 2021-2024 The MathWorks, Inc.
 
 % Vehicle body parameters
 % Vehicle reference point is point directly between 

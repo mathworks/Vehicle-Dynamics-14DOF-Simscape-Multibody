@@ -4,7 +4,7 @@ function sm_vehicle_2axle_heave_roll_plot2brktrq(simlogRes,logsoutRes)
 %
 % Plot of torque applied by braking system.
 %
-% Copyright 2016-2023 The MathWorks, Inc.
+% Copyright 2016-2024 The MathWorks, Inc.
 
 % Reuse figure if it exists, else create new figure
 figString = ['h1_' mfilename];
